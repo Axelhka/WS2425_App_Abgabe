@@ -1,0 +1,3 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang,agency_phone,agency_email
+de:vpe:agency:13,Bürgerbus Maulbronn,https://www.buergerbus-maulbronn.de/,Europe/Berlin,de,+49 (7041) 814 7252,info@buergerbus-maulbronn.de
+de:vpe:agency:14,Bürgerbus Wiernsheim,https://www.bürgerbus-wiernsheim.de/,Europe/Berlin,de,+49 (7041) 983 7241,info@bürgerbus-wiernsheim.de

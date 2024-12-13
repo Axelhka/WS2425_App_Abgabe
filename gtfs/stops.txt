@@ -1,0 +1,161 @@
+stop_id,stop_name,stop_lat,stop_lon,location_type,parent_station
+de:08236:2210:0:1,Maulbronn Seehausweg,48.996595,8.799733,,de:08236:2210_Parent
+de:08236:2210_Parent,Maulbronn Seehausweg,48.996514,8.799548,1,
+de:08236:2211:0:1,Maulbronn Alte Post,48.998034,8.804739,,de:08236:2211_Parent
+de:08236:2211:0:2,Maulbronn Alte Post,48.998003,8.804765,,de:08236:2211_Parent
+de:08236:2211_Parent,Maulbronn Alte Post,48.998019,8.804752,1,
+de:08236:2213:1:1,Maulbronn Kloster,49.000173,8.812243,,de:08236:2213_Parent
+de:08236:2213_Parent,Maulbronn Kloster,49.000147,8.812481,1,
+de:08236:2214:0:1,Maulbronn Stuttgarter Straße,49.000366,8.815517,,de:08236:2214_Parent
+de:08236:2214_Parent,Maulbronn Stuttgarter Straße,49.000366,8.815517,1,
+de:08236:2216:0:2,Maulbronn Schefenacker,48.996831,8.811561,,de:08236:2216_Parent
+de:08236:2216_Parent,Maulbronn Schefenacker,48.996799,8.811914,1,
+de:08236:2218:0:1,Zaisersweiher Postplatz,49.006209,8.858404,,de:08236:2218_Parent
+de:08236:2218_Parent,Zaisersweiher Postplatz,49.006216,8.858526,1,
+de:08236:2219:0:1,Schmie Strombergstraße,48.984160,8.828856,,de:08236:2219_Parent
+de:08236:2219_Parent,Schmie Strombergstraße,48.984199,8.828797,1,
+de:08236:2224:0:1,Zaisersweiher Eichbuschstraße,49.009624,8.858990,,de:08236:2224_Parent
+de:08236:2224_Parent,Zaisersweiher Eichbuschstraße,49.009637,8.858892,1,
+de:08236:2227:0:1,Maulbronn Talweg,48.995041,8.796809,,de:08236:2227_Parent
+de:08236:2227_Parent,Maulbronn Talweg,48.995053,8.796780,1,
+de:08236:2603:0:1,Großglattbach Rathaus,48.913254,8.897135,,de:08236:2603_Parent
+de:08236:2603_Parent,Großglattbach Rathaus,48.913267,8.897070,1,
+de:08236:2604:0:1,Großglattbach Kelter,48.914966,8.898169,,de:08236:2604_Parent
+de:08236:2604_Parent,Großglattbach Kelter,48.915004,8.898112,1,
+de:08236:2607:0:1,Pinache Gewerbegebiet,48.909276,8.847742,,de:08236:2607_Parent
+de:08236:2607:0:2,Pinache Gewerbegebiet,48.909357,8.847660,,de:08236:2607_Parent
+de:08236:2607_Parent,Pinache Gewerbegebiet,48.909317,8.847701,1,
+de:08236:2608:0:1,Pinache Kirche,48.906937,8.849055,,de:08236:2608_Parent
+de:08236:2608_Parent,Pinache Kirche,48.907142,8.849053,1,
+de:08236:2900:0:1,Wiernsheim Mühlstraße,48.891709,8.852949,,de:08236:2900_Parent
+de:08236:2900:0:2,Wiernsheim Mühlstraße,48.891206,8.852751,,de:08236:2900_Parent
+de:08236:2900_Parent,Wiernsheim Mühlstraße,48.891458,8.852850,1,
+de:08236:2901:0:1,Wiernsheim Bürgersaal,48.890697,8.848517,,de:08236:2901_Parent
+de:08236:2901_Parent,Wiernsheim Bürgersaal,48.890601,8.848445,1,
+de:08236:2902:0:1,Wiernsheim Lindenhalle,48.885917,8.849924,,de:08236:2902_Parent
+de:08236:2902_Parent,Wiernsheim Lindenhalle,48.885996,8.850014,1,
+de:08236:2903:0:2,Wiernsheim Krügele,48.883531,8.850941,,de:08236:2903_Parent
+de:08236:2903_Parent,Wiernsheim Krügele,48.883352,8.851011,1,
+de:08236:2904:0:1,Serres Pinascastraße,48.894102,8.871905,,de:08236:2904_Parent
+de:08236:2904_Parent,Serres Pinascastraße,48.894155,8.871918,1,
+de:08236:2905:0:1,Serres Rathaus,48.894007,8.875515,,de:08236:2905_Parent
+de:08236:2905_Parent,Serres Rathaus,48.894064,8.875497,1,
+de:08236:2906:0:1,Iptingen Schönblickstraße,48.888022,8.897464,,de:08236:2906_Parent
+de:08236:2906_Parent,Iptingen Schönblickstraße,48.888307,8.897034,1,
+de:08236:2908:0:1,Serres Schillerstrasse,48.890927,8.876225,,de:08236:2908_Parent
+de:08236:2908_Parent,Serres Schillerstrasse,48.890882,8.876256,1,
+de:08236:2914:0:1,Iptingen Ortsmitte,48.886900,8.897622,,de:08236:2914_Parent
+de:08236:2914_Parent,Iptingen Ortsmitte,48.886857,8.897732,1,
+de:08236:2918:0:1,Wiernsheim Friedhof,48.888857,8.853056,,de:08236:2918_Parent
+de:08236:2918_Parent,Wiernsheim Friedhof,48.888952,8.852914,1,
+de:08236:4001:0:1,Pinache Großglattbacher Straße,48.909855,8.850970,,de:08236:4001_Parent
+de:08236:4001_Parent,Pinache Großglattbacher Straße,48.909810,8.850909,1,
+de:08236:4002:0:1,Großglattbach Panorama-/Heerstraße,48.910168,8.894241,,de:08236:4002_Parent
+de:08236:4002_Parent,Großglattbach Panorama-/Heerstraße,48.910168,8.894241,1,
+de:08236:4003:0:1,Großglattbach Iptinger Weg,48.911652,8.895561,,de:08236:4003_Parent
+de:08236:4003_Parent,Großglattbach Iptinger Weg,48.911652,8.895561,1,
+de:08236:4005:0:1,Großglattbach Fronackerweg,48.914800,8.895624,,de:08236:4005_Parent
+de:08236:4005_Parent,Großglattbach Fronackerweg,48.914800,8.895624,1,
+de:08236:4006:0:1,Großglattbach Marsstraße,48.915166,8.894033,,de:08236:4006_Parent
+de:08236:4006_Parent,Großglattbach Marsstraße,48.915166,8.894033,1,
+de:08236:4007:0:1,Großglattbach Galileistraße,48.915006,8.891000,,de:08236:4007_Parent
+de:08236:4007_Parent,Großglattbach Galileistraße,48.915006,8.891000,1,
+de:08236:4009:0:1,Pinache Friedhof,48.911443,8.845063,,de:08236:4009_Parent
+de:08236:4009_Parent,Pinache Friedhof,48.911443,8.845063,1,
+de:08236:4010:0:1,Wiernsheim AZP,48.891113,8.843931,,de:08236:4010_Parent
+de:08236:4010_Parent,Wiernsheim AZP,48.891113,8.843931,1,
+de:08236:4011:0:1,Wiernsheim Apotheke,48.890845,8.849878,,de:08236:4011_Parent
+de:08236:4011_Parent,Wiernsheim Apotheke,48.890845,8.849878,1,
+de:08236:4012:0:1,Wiernsheim Ortsmitte,48.891061,8.851142,,de:08236:4012_Parent
+de:08236:4012_Parent,Wiernsheim Ortsmitte,48.891061,8.851142,1,
+de:08236:4013:0:1,Wiernsheim Mühlacker Straße,48.892176,8.851209,,de:08236:4013_Parent
+de:08236:4013_Parent,Wiernsheim Mühlacker Straße,48.892176,8.851209,1,
+de:08236:4014:0:1,Serres Kernerstraße,48.890758,8.878825,,de:08236:4014_Parent
+de:08236:4014_Parent,Serres Kernerstraße,48.890758,8.878825,1,
+de:08236:4015:0:1,Serres Hans-Albrecht-Str.,48.890054,8.881520,,de:08236:4015_Parent
+de:08236:4015_Parent,Serres Hans-Albrecht-Str.,48.890054,8.881520,1,
+de:08236:4016:0:1,Iptingen Im Schönblick,48.888997,8.897287,,de:08236:4016_Parent
+de:08236:4016_Parent,Iptingen Im Schönblick,48.888997,8.897287,1,
+de:08236:4017:0:1,Iptingen Mühle,48.887304,8.900251,,de:08236:4017_Parent
+de:08236:4017_Parent,Iptingen Mühle,48.887304,8.900251,1,
+de:08236:4018:0:1,Iptingen Mönsheimer Str.,48.884607,8.898898,,de:08236:4018_Parent
+de:08236:4018_Parent,Iptingen Mönsheimer Str.,48.884607,8.898898,1,
+de:08236:4019:0:1,Iptingen Rathaus (Bürgerbus),48.883619,8.899961,,de:08236:4019_Parent
+de:08236:4019_Parent,Iptingen Rathaus (Bürgerbus),48.883619,8.899961,1,
+de:08236:4020:0:1,Iptingen Kreuzbachhalle,48.882265,8.900028,,de:08236:4020_Parent
+de:08236:4020_Parent,Iptingen Kreuzbachhalle,48.882265,8.900028,1,
+de:08236:4022:0:1,Iptingen Gasthaus Rössle,48.885703,8.899286,,de:08236:4022_Parent
+de:08236:4022_Parent,Iptingen Gasthaus Rössle,48.885703,8.899286,1,
+de:08236:4024:0:1,Iptingen Hofwiesenstraße,48.889324,8.901273,,de:08236:4024_Parent
+de:08236:4024_Parent,Iptingen Hofwiesenstraße,48.889324,8.901273,1,
+de:08236:4025:0:1,Iptingen Feuerwache,48.888265,8.899993,,de:08236:4025_Parent
+de:08236:4025_Parent,Iptingen Feuerwache,48.888265,8.899993,1,
+de:08236:4028:0:1,Wiernsheim Im Bild,48.888813,8.854923,,de:08236:4028_Parent
+de:08236:4028_Parent,Wiernsheim Im Bild,48.888813,8.854923,1,
+de:08236:4029:0:1,Wiernsheim Breiter Weg,48.887610,8.856173,,de:08236:4029_Parent
+de:08236:4029_Parent,Wiernsheim Breiter Weg,48.887610,8.856173,1,
+de:08236:4030:0:1,Wiernsheim Kazenloch,48.885936,8.856503,,de:08236:4030_Parent
+de:08236:4030:0:2,Wiernsheim Kazenloch,48.884892,8.853593,,de:08236:4030_Parent
+de:08236:4030_Parent,Wiernsheim Kazenloch,48.885414,8.855048,1,
+de:08236:4031:0:1,Wiernsheim M.Luther Str.,48.885940,8.854233,,de:08236:4031_Parent
+de:08236:4031_Parent,Wiernsheim M.Luther Str.,48.885940,8.854233,1,
+de:08236:4033:0:1,Wiernsheim Lindenstraße,48.884439,8.849673,,de:08236:4033_Parent
+de:08236:4033_Parent,Wiernsheim Lindenstraße,48.884439,8.849673,1,
+de:08236:4040:0:1,Maulbronn Märkte,48.998529,8.801281,,de:08236:4040_Parent
+de:08236:4040_Parent,Maulbronn Märkte,48.998529,8.801281,1,
+de:08236:4041:0:1,Zaisersweiher Füllmenbacherhofweg,49.008685,8.861644,,de:08236:4041_Parent
+de:08236:4041_Parent,Zaisersweiher Füllmenbacherhofweg,49.008685,8.861644,1,
+de:08236:4042:0:1,Zaisersweiher W.Schenk Schule,49.006232,8.862188,,de:08236:4042_Parent
+de:08236:4042_Parent,Zaisersweiher W.Schenk Schule,49.006232,8.862188,1,
+de:08236:4043:0:1,Zaisersweiher Mühlacker Str.,49.004315,8.858435,,de:08236:4043_Parent
+de:08236:4043_Parent,Zaisersweiher Mühlacker Str.,49.004315,8.858435,1,
+de:08236:4044:0:1,Zaisersweiher Friedhof,49.006054,8.855047,,de:08236:4044_Parent
+de:08236:4044_Parent,Zaisersweiher Friedhof,49.006054,8.855047,1,
+de:08236:4045:0:1,Maulbronn Friedhofweg,49.000577,8.810029,,de:08236:4045_Parent
+de:08236:4045_Parent,Maulbronn Friedhofweg,49.000577,8.810029,1,
+de:08236:4046:0:1,Maulbronn Hilsenbeurenstraße,48.999755,8.804904,,de:08236:4046_Parent
+de:08236:4046_Parent,Maulbronn Hilsenbeurenstraße,48.999755,8.804904,1,
+de:08236:4047:0:1,Maulbronn Kinderzentrum,49.001077,8.801395,,de:08236:4047_Parent
+de:08236:4047_Parent,Maulbronn Kinderzentrum,49.001077,8.801395,1,
+de:08236:4048:0:1,Maulbronn Keplerstraße,48.999211,8.800895,,de:08236:4048_Parent
+de:08236:4048_Parent,Maulbronn Keplerstraße,48.999211,8.800895,1,
+de:08236:4049:0:1,Maulbronn Keplerstr./Seehausweg,48.998881,8.797730,,de:08236:4049_Parent
+de:08236:4049_Parent,Maulbronn Keplerstr./Seehausweg,48.998881,8.797730,1,
+de:08236:4050:0:1,Maulbronn Waldfriedhof,49.000360,8.794224,,de:08236:4050_Parent
+de:08236:4050_Parent,Maulbronn Waldfriedhof,49.000360,8.794224,1,
+de:08236:4051:0:1,Maulbronn Billensb.Kiga,48.997682,8.792280,,de:08236:4051_Parent
+de:08236:4051_Parent,Maulbronn Billensb.Kiga,48.997682,8.792280,1,
+de:08236:4052:0:1,Maulbronn Malvenweg,48.997045,8.788677,,de:08236:4052_Parent
+de:08236:4052_Parent,Maulbronn Malvenweg,48.997045,8.788677,1,
+de:08236:4053:0:1,Maulbronn Höhenstraße,48.997590,8.808942,,de:08236:4053_Parent
+de:08236:4053_Parent,Maulbronn Höhenstraße,48.997590,8.808942,1,
+de:08236:4054:0:1,Maulbronn Lärchenstraße,48.996580,8.810609,,de:08236:4054_Parent
+de:08236:4054_Parent,Maulbronn Lärchenstraße,48.996580,8.810609,1,
+de:08236:4055:0:1,Maulbronn Tannenweg,48.995537,8.809420,,de:08236:4055_Parent
+de:08236:4055_Parent,Maulbronn Tannenweg,48.995537,8.809420,1,
+de:08236:4057:0:1,Schmie Alte Schule,48.983619,8.826888,,de:08236:4057_Parent
+de:08236:4057_Parent,Schmie Alte Schule,48.983619,8.826888,1,
+de:08236:4059:0:1,Schmie Oskar Schrade Straße,48.982175,8.833390,,de:08236:4059_Parent
+de:08236:4059_Parent,Schmie Oskar Schrade Straße,48.982175,8.833390,1,
+de:08236:4060:0:1,Schmie Friedhof,48.985328,8.826019,,de:08236:4060_Parent
+de:08236:4060_Parent,Schmie Friedhof,48.985328,8.826019,1,
+de:08236:4061:0:1,Maulbronn Sportzentrum,48.990930,8.818714,,de:08236:4061_Parent
+de:08236:4061_Parent,Maulbronn Sportzentrum,48.990930,8.818714,1,
+de:08236:4062:0:1,Maulbronn Buchenstraße,48.997460,8.816593,,de:08236:4062_Parent
+de:08236:4062_Parent,Maulbronn Buchenstraße,48.997460,8.816593,1,
+de:08236:4063:0:1,Maulbronn Tiefer See,49.004049,8.818090,,de:08236:4063_Parent
+de:08236:4063_Parent,Maulbronn Tiefer See,49.004049,8.818090,1,
+de:08236:8401:0:1,Wiernsheim Im Roßland,48.892292,8.848855,,de:08236:8401_Parent
+de:08236:8401_Parent,Wiernsheim Im Roßland,48.892292,8.848855,1,
+de:08236:8402:0:1,Wiernsheim Schanzstraße,48.888159,8.846603,,de:08236:8402_Parent
+de:08236:8402_Parent,Wiernsheim Schanzstraße,48.888159,8.846603,1,
+de:08236:8403:0:1,Wiernsheim Schanz-/Pichlerstraße,48.889243,8.849646,,de:08236:8403_Parent
+de:08236:8403_Parent,Wiernsheim Schanz-/Pichlerstraße,48.889243,8.849646,1,
+de:08236:8404:0:1,Großglattbach Panoramastraße,48.910809,8.896018,,de:08236:8404_Parent
+de:08236:8404_Parent,Großglattbach Panoramastraße,48.910809,8.896018,1,
+de:08236:8405:0:1,Schmie Lienzinger Straße,48.983599,8.829686,,de:08236:8405_Parent
+de:08236:8405_Parent,Schmie Lienzinger Straße,48.983599,8.829686,1,
+de:08236:8492:2:3,Wiernsheim Einkaufsmärkte,48.891473,8.859874,,de:08236:8492_Parent
+de:08236:8492_Parent,Wiernsheim Einkaufsmärkte,48.891347,8.859608,1,
+de:08236:8571:0:1,Maulbronn Lindenstraße,48.995681,8.814639,,de:08236:8571_Parent
+de:08236:8571_Parent,Maulbronn Lindenstraße,48.995681,8.814639,1,
