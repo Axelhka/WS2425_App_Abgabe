@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Fehler beim Kopieren der Datei!");
         }
 
-        System.out.println("Hallo Welt!");
         String path = this.getApplication().getFilesDir() + "/gtfs.zip";
         File gtfsInputFile = new File(path);
         System.out.println(path);

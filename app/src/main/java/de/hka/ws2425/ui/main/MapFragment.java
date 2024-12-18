@@ -13,15 +13,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.nabinbhandari.android.permissions.PermissionHandler;
 import com.nabinbhandari.android.permissions.Permissions;
 
+import org.gtfs.reader.GtfsSimpleDao;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
@@ -29,7 +28,6 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,13 +51,11 @@ public class MapFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MapViewModel.class);
         // TODO: Use the ViewModel
-        List<Stops> stopList = StopDataParser.parseStopsFromFile("/data/user/0/de.hka.ws2425/files/gtfs.zip/stops.txt");
-        System.out.println("StopList im MapFragment" + stopList);
-        displayStopsOnMap();
+
 
     }
-
-    private void displayStopsOnMap() {
+    private void displayStopsOnMap(List<Stops> stopList) {
+        System.out.println("DisplayStopsonMap wurde gestartet, StopList:" + stopList);
         for (Stops stops : stopList) {
             GeoPoint stopLocation = new GeoPoint(stops.getLatitude(), stops.getLongitude());
 
@@ -68,7 +64,7 @@ public class MapFragment extends Fragment {
             marker.setPosition(stopLocation);
             marker.setTitle(stops.getName());
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-
+            System.out.println("Marker hat Daten?" + marker.getPosition());
             // Marker zur Karte hinzufügen
             mapView.getOverlays().add(marker);
         }
@@ -131,6 +127,11 @@ public class MapFragment extends Fragment {
                 super.onDenied(context, deniedPermissions);
             }
         });
+
+        List<Stops> stopList = StopDataParser.parseStopsFromFile("/data/user/0/de.hka.ws2425/files/gtfs.zip");
+        System.out.println("StopList im MapFragment" + stopList);
+
+        displayStopsOnMap(stopList);
     }
 
     @SuppressLint("MissingPermission")
