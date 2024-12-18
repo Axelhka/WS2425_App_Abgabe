@@ -27,9 +27,12 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hka.ws2425.R;
 
@@ -38,6 +41,8 @@ public class MapFragment extends Fragment {
     private MapViewModel mViewModel;
 
     private MapView mapView;
+
+    private List<Stops> stopList;
 
     public static MapFragment newInstance() {
         return new MapFragment();
@@ -48,7 +53,29 @@ public class MapFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MapViewModel.class);
         // TODO: Use the ViewModel
+        List<Stops> stopList = StopDataParser.parseStopsFromFile("/data/user/0/de.hka.ws2425/files/gtfs.zip/stops.txt");
+        System.out.println("StopList im MapFragment" + stopList);
+        displayStopsOnMap();
+
     }
+
+    private void displayStopsOnMap() {
+        for (Stops stops : stopList) {
+            GeoPoint stopLocation = new GeoPoint(stops.getLatitude(), stops.getLongitude());
+
+            // Marker erstellen
+            Marker marker = new Marker(mapView);
+            marker.setPosition(stopLocation);
+            marker.setTitle(stops.getName());
+            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+
+            // Marker zur Karte hinzufügen
+            mapView.getOverlays().add(marker);
+        }
+
+        mapView.invalidate(); // Karte aktualisieren
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
