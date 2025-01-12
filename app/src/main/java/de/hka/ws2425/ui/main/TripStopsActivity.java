@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hka.ws2425.MainActivity;
 import de.hka.ws2425.R;
 
 public class TripStopsActivity extends AppCompatActivity {
@@ -101,9 +102,9 @@ public class TripStopsActivity extends AppCompatActivity {
         backToMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TripStopsActivity.this, MapFragment.class); // Name der Karten-Activity
+                Intent intent = new Intent(TripStopsActivity.this, MainActivity.class); // Name der Karten-Activity
                 startActivity(intent);
-                finish(); // Optional, um die aktuelle Activity zu schließen
+//                finish(); // Optional, um die aktuelle Activity zu schließen
             }
         });
     }

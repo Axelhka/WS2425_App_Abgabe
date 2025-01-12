@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import de.hka.ws2425.ui.main.MainFragment;
+import de.hka.ws2425.ui.main.MapFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,27 +32,27 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Fehler beim Kopieren der Datei!");
         }
 
-        String path = this.getApplication().getFilesDir() + "/gtfs-hka-s24.zip";
-        File gtfsInputFile = new File(path);
-        System.out.println(path);
-        GtfsSimpleDao gtfsSimpleDao = new GtfsSimpleDao();
-
-        GtfsReader gtfsReader = new GtfsReader();
-        gtfsReader.setDataAccessObject(gtfsSimpleDao);
-        try {
-            gtfsReader.read(gtfsInputFile.getAbsolutePath());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        gtfsSimpleDao.getAgencies().forEach(agency ->{
-            Log.d(this.getClass().getSimpleName(), agency.getName());
-    });
+//        String path = this.getApplication().getFilesDir() + "/gtfs-hka-s24.zip";
+//        File gtfsInputFile = new File(path);
+//        System.out.println(path);
+//        GtfsSimpleDao gtfsSimpleDao = new GtfsSimpleDao();
+//
+//        GtfsReader gtfsReader = new GtfsReader();
+//        gtfsReader.setDataAccessObject(gtfsSimpleDao);
+//        try {
+//            gtfsReader.read(gtfsInputFile.getAbsolutePath());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        gtfsSimpleDao.getAgencies().forEach(agency ->{
+//            Log.d(this.getClass().getSimpleName(), agency.getName());
+//    });
 
         if (savedInstanceState == null) {
 
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
+                    .replace(R.id.container, MapFragment.newInstance())
                     .commitNow();
 
         }

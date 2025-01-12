@@ -1,9 +1,13 @@
 package de.hka.ws2425.ui.main;
 
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -82,7 +86,7 @@ public class MapFragment extends Fragment {
             marker.setPosition(stopLocation);
             marker.setTitle(stop.getName());
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-            System.out.println("Marker hat Daten?" + marker.getPosition());
+//            System.out.println("Marker hat Daten?" + marker.getPosition());
 
             // Marker-Click-Event
             marker.setOnMarkerClickListener((clickedMarker, mapView) -> {
@@ -127,7 +131,7 @@ public class MapFragment extends Fragment {
 
         this.mapView.setTileSource(mapServer);
 
-        GeoPoint startPoint = new GeoPoint(49.0069, 8.4037);
+        GeoPoint startPoint = new GeoPoint(48.998695, 8.803826);
 
         IMapController mapController = this.mapView.getController();
         mapController.setZoom(14.0);
@@ -144,17 +148,26 @@ public class MapFragment extends Fragment {
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
         };
 
-        Permissions.check(this.getContext(), permissions, null, null, new PermissionHandler() {
-            @Override
-            public void onGranted() {
-                setupLocationListener();
-            }
+        if (!(ContextCompat.checkSelfPermission( this.getContext(), permissions[0]) == PackageManager.PERMISSION_GRANTED)){
+            new AlertDialog.Builder(this.getContext()).setTitle("Permissions Request")
+                    .setMessage("Diese App benötigt die präzisen Standortdaten um die Haltestelle ihres Busses anzuzeigen.")
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                        Permissions.check(this.getContext(), permissions, null, null, new PermissionHandler() {
+                            @Override
+                            public void onGranted() {
+                                setupLocationListener();
+                            }
+                            @Override
+                            public void onDenied(Context context, ArrayList<String> deniedPermissions) {
+                                super.onDenied(context, deniedPermissions);
+                            }
+                        });
 
-            @Override
-            public void onDenied(Context context, ArrayList<String> deniedPermissions) {
-                super.onDenied(context, deniedPermissions);
-            }
-        });
+                    })
+                    .setCancelable(false)
+                    .create().show();
+        }
+
 
         displayStopsOnMap(stopList);
     }
@@ -185,15 +198,15 @@ public class MapFragment extends Fragment {
 
         if (dao.getStopTimes() != null) {
             Log.d("MapFragment", "StopTimes geladen: " + dao.getStopTimes().size());
-            for (StopTime stopTime : dao.getStopTimes()) {
-                Log.d("MapFragment", "StopTime: StopId=" + stopTime.getStopId() +
-                        ", DepartureTime=" + stopTime.getDepartureTime());
-            }
+//            for (StopTime stopTime : dao.getStopTimes()) {
+//                Log.d("MapFragment", "StopTime: StopId=" + stopTime.getStopId() +
+//                        ", DepartureTime=" + stopTime.getDepartureTime());
+//            }
         }
 
-        for (Stop stop : stopList) {
-            Log.d("MapFragment", "Stop: " + stop.getId() + ", Lat: " + stop.getLatitude() + ", Lon: " + stop.getLongitude());
-        }
+//        for (Stop stop : stopList) {
+//            Log.d("MapFragment", "Stop: " + stop.getId() + ", Lat: " + stop.getLatitude() + ", Lon: " + stop.getLongitude());
+//        }
 
 
 
