@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import com.nabinbhandari.android.permissions.PermissionHandler;
 import com.nabinbhandari.android.permissions.Permissions;
 
 import org.gtfs.reader.GtfsSimpleDao;
+import org.gtfs.reader.model.Stop;
+import org.gtfs.reader.model.StopTime;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
@@ -33,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.hka.ws2425.R;
+import android.content.Intent;
 
 public class MapFragment extends Fragment {
 
@@ -40,7 +44,7 @@ public class MapFragment extends Fragment {
 
     private MapView mapView;
 
-    private List<Stops> stopList;
+    private List<Stop> stopList = new ArrayList<>();
 
     public static MapFragment newInstance() {
         return new MapFragment();
@@ -54,17 +58,41 @@ public class MapFragment extends Fragment {
 
 
     }
-    private void displayStopsOnMap(List<Stops> stopList) {
+    private void displayStopsOnMap(List<Stop> stopList) {
+
+        if (stopList == null || stopList.isEmpty()) {
+            System.out.println("StopList ist leer oder null.");
+            if (stopList == null) {
+                System.out.println("stopList ist null.");
+            } else {
+                System.out.println("stopList hat Größe: " + stopList.size());
+            }
+        }
+
         System.out.println("DisplayStopsonMap wurde gestartet, StopList:" + stopList);
-        for (Stops stops : stopList) {
-            GeoPoint stopLocation = new GeoPoint(stops.getLatitude(), stops.getLongitude());
+
+        for (Stop stop : stopList) {
+            double latitude = Double.parseDouble(stop.getLatitude());
+            double longitude = Double.parseDouble(stop.getLongitude());
+
+            GeoPoint stopLocation = new GeoPoint(latitude, longitude);
 
             // Marker erstellen
             Marker marker = new Marker(mapView);
             marker.setPosition(stopLocation);
-            marker.setTitle(stops.getName());
+            marker.setTitle(stop.getName());
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
             System.out.println("Marker hat Daten?" + marker.getPosition());
+
+            // Marker-Click-Event
+            marker.setOnMarkerClickListener((clickedMarker, mapView) -> {
+                Intent intent = new Intent(getActivity(), DeparturesActivity.class);
+                intent.putExtra("STOP_ID", stop.getId()); // Stop-ID übergeben
+                startActivity(intent);
+                return true; // Event wird konsumiert
+            });
+
+
             // Marker zur Karte hinzufügen
             mapView.getOverlays().add(marker);
         }
@@ -128,11 +156,52 @@ public class MapFragment extends Fragment {
             }
         });
 
-        List<Stops> stopList = StopDataParser.parseStopsFromFile("/data/user/0/de.hka.ws2425/files/gtfs.zip");
-        System.out.println("StopList im MapFragment" + stopList);
-
         displayStopsOnMap(stopList);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Log.d("MapFragment", "onViewCreated wurde aufgerufen.");
+
+        // GTFS-Datenparser initialisieren
+        GtfsSimpleDao dao = StopDataParser.getInstance(this);
+        if (dao != null) {
+            Log.d("MapFragment", "GtfsSimpleDao erfolgreich initialisiert.");
+            Log.d("MapFragment", "Anzahl der Stops: " + dao.getStops().size());
+
+
+            // stopList mit den geladenen Stops befüllen
+            stopList = dao.getStops(); // Stops aus GtfsSimpleDao holen
+
+            // GtfsLoader initialisieren
+            GtfsLoader.initialize(dao);
+
+            Log.d("MapFragment", "StopList wurde mit " + stopList.size() + " Einträgen befüllt.");
+        } else {
+            Log.e("MapFragment", "GtfsSimpleDao konnte nicht initialisiert werden.");
+        }
+
+        if (dao.getStopTimes() != null) {
+            Log.d("MapFragment", "StopTimes geladen: " + dao.getStopTimes().size());
+            for (StopTime stopTime : dao.getStopTimes()) {
+                Log.d("MapFragment", "StopTime: StopId=" + stopTime.getStopId() +
+                        ", DepartureTime=" + stopTime.getDepartureTime());
+            }
+        }
+
+        for (Stop stop : stopList) {
+            Log.d("MapFragment", "Stop: " + stop.getId() + ", Lat: " + stop.getLatitude() + ", Lon: " + stop.getLongitude());
+        }
+
+
+
+        // Stops auf der Karte anzeigen
+        displayStopsOnMap(stopList);
+    }
+
+
 
     @SuppressLint("MissingPermission")
     private void setupLocationListener()

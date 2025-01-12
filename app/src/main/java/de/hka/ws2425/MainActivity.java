@@ -13,9 +13,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
 
 import de.hka.ws2425.ui.main.MainFragment;
 
@@ -27,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        String filePath = copyAssetToFile(this, "gtfs.zip", "gtfs.zip");
+        String filePath = copyAssetToFile(this, "gtfs-hka-s24.zip", "gtfs-hka-s24.zip");
         if (filePath != null) {
             System.out.println("Dateipfad: " + filePath);
         } else {
             System.out.println("Fehler beim Kopieren der Datei!");
         }
 
-        String path = this.getApplication().getFilesDir() + "/gtfs.zip";
+        String path = this.getApplication().getFilesDir() + "/gtfs-hka-s24.zip";
         File gtfsInputFile = new File(path);
         System.out.println(path);
         GtfsSimpleDao gtfsSimpleDao = new GtfsSimpleDao();
