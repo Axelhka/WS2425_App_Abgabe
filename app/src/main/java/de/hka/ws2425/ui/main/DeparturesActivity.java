@@ -1,6 +1,7 @@
 package de.hka.ws2425.ui.main;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.gtfs.reader.GtfsSimpleDao;
+import org.gtfs.reader.model.Calendar;
+import org.gtfs.reader.model.CalendarDate;
 import org.gtfs.reader.model.Route;
 import org.gtfs.reader.model.Stop;
 import org.gtfs.reader.model.StopTime;
 import org.gtfs.reader.model.Trip;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -59,7 +65,7 @@ public class DeparturesActivity extends AppCompatActivity {
             // Überschrift setzen
             headerTextView.setText("Nächste Abfahrten ab " + stopName);
 
-            // Departure-Daten verarbeiten (Rest deines Codes bleibt gleich)
+            // Departure-Daten verarbeiten
             DepartureDataParser departureDataParser = new DepartureDataParser(dao);
             List<StopTime> departures = departureDataParser.getDeparturesForStop(stopId);
             List<String> departureInfo = new ArrayList<>();
@@ -75,9 +81,39 @@ public class DeparturesActivity extends AppCompatActivity {
                 routesMap.put(route.getId(), route);
             }
 
+            // Filtere Abfahrten basierend auf dem aktuellen Tag
+            LocalDate today = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                today = LocalDate.now();
+            }
+
+
+            // Mapping von tripId zu serviceId
+            Map<String, String> tripToServiceMap = new HashMap<>();
+            for (Trip trip : dao.getTrips()) {
+                tripToServiceMap.put(trip.getTripId(), trip.getServiceId());
+            }
+
+
+            List<StopTime> filteredDepartures = new ArrayList<>();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                today = LocalDate.now();
+            }
+
+            for (StopTime stopTime : departures) {
+                String tripId = stopTime.getTripId();
+                String serviceId = tripToServiceMap.get(tripId);
+
+                if (serviceId != null && isServiceActiveOnDate(serviceId, today, dao.getCalendars())) {
+                    filteredDepartures.add(stopTime);
+                }
+            }
+
+
+            // Füge die gültigen Abfahrten zur Anzeige hinzu
             String time = null;
             String tripInfo = null;
-            for (StopTime stopTime : departures) {
+            for (StopTime stopTime : filteredDepartures) {
                 String tripId = stopTime.getTripId();
                 Trip trip = tripsMap.get(tripId);
                 if (trip != null) {
@@ -92,7 +128,7 @@ public class DeparturesActivity extends AppCompatActivity {
                 }
             }
 
-            //ListView mit Abfahrten füllen
+            // ListView mit Abfahrten füllen
             ArrayAdapter<String> adapter = new ArrayAdapter<>(
                     this,
                     android.R.layout.simple_list_item_1,
@@ -101,12 +137,10 @@ public class DeparturesActivity extends AppCompatActivity {
             departuresListView.setAdapter(adapter);
 
             departuresListView.setOnItemClickListener((parent, view, position, id) -> {
-                // Trip-ID aus der entsprechenden Abfahrt extrahieren
-                StopTime selectedStopTime = departures.get(position); // Das entsprechende StopTime-Objekt
+                StopTime selectedStopTime = filteredDepartures.get(position);
                 String selectedTripId = selectedStopTime.getTripId();
 
                 if (selectedTripId != null) {
-                    // Neue Activity starten und Trip-ID übergeben
                     Intent intent = new Intent(DeparturesActivity.this, TripStopsActivity.class);
                     intent.putExtra("TRIP_ID", selectedTripId);
                     startActivity(intent);
@@ -127,4 +161,53 @@ public class DeparturesActivity extends AppCompatActivity {
         });
     }
 
+    public boolean isServiceActiveOnDate(String serviceId, LocalDate date, List<Calendar> calendars) {
+        // Umwandlungsformat für Datum (angenommen: YYYYMMDD)
+        DateTimeFormatter dateFormatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            dateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        }
+
+        for (Calendar calendar : calendars) {
+            // Service-ID prüfen (falls notwendig)
+            // if (!calendar.getServiceId().equals(serviceId)) continue; // Falls `serviceId` existiert
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                // Datumskonvertierung
+                LocalDate startDate = null;
+                startDate = LocalDate.parse(String.valueOf(calendar.getStartDate()), dateFormatter);
+                LocalDate endDate = LocalDate.parse(String.valueOf(calendar.getEndDate()), dateFormatter);
+
+                // Überprüfung, ob das Datum innerhalb des gültigen Bereichs liegt
+                if (!date.isBefore(startDate) && !date.isAfter(endDate)) {
+                    DayOfWeek dayOfWeek = date.getDayOfWeek();
+
+                    // Überprüfung des Wochentags
+                    switch (dayOfWeek) {
+                        case MONDAY:
+                            if (calendar.getMonday()) return true;
+                            break;
+                        case TUESDAY:
+                            if (calendar.getTuesday()) return true;
+                            break;
+                        case WEDNESDAY:
+                            if (calendar.getWednesday()) return true;
+                            break;
+                        case THURSDAY:
+                            if (calendar.getThursday()) return true;
+                            break;
+                        case FRIDAY:
+                            if (calendar.getFriday()) return true;
+                            break;
+                        case SATURDAY:
+                            if (calendar.getSaturday()) return true;
+                            break;
+                        case SUNDAY:
+                            if (calendar.getSunday()) return true;
+                            break;
+                    }
+                }
+            }
+        }
+        return false; // Kein passender Eintrag gefunden
+    }
 }
